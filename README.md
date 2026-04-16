@@ -1,153 +1,117 @@
-# 🚀 Stock Price Forecasting using LSTM + ARIMA Hybrid Model
+# Stock Price Forecasting using LSTM + ARIMA Hybrid Model
 
-## 📌 Overview
+## Overview
 
-This project builds a **hybrid time-series forecasting system** that combines **deep learning (LSTM)** and **statistical modeling (ARIMA)** to predict stock prices with higher accuracy and stability.
+This project focuses on building a stock price forecasting system using a hybrid approach that combines LSTM (Long Short-Term Memory) and ARIMA models.
 
-Instead of relying on a single model, this approach:
-- Uses **LSTM** to capture complex, non-linear patterns in sequential data  
-- Uses **ARIMA** to model and correct residual errors  
-
-👉 The outcome is a **robust forecasting pipeline** that reduces prediction bias and improves overall performance.
+Instead of relying on a single method, the model uses LSTM to learn patterns from historical data and ARIMA to correct prediction errors. This helps improve overall accuracy and stability in forecasts.
 
 ---
 
-## 🎯 Objective
+## Objective
 
-- Develop an **end-to-end stock forecasting pipeline**
-- Improve prediction accuracy using **hybrid modeling**
-- Demonstrate **real-world application of AI in financial analytics**
-
----
-
-## 🧠 Business Impact
-
-This solution reflects how modern organizations leverage **data & AI for growth**:
-
-- 📈 Better financial forecasting  
-- 📊 Data-driven investment decisions  
-- ⚙️ Reduced model bias and error  
-- 🔍 Enhanced trend and pattern detection  
+- Build a complete time-series forecasting pipeline  
+- Improve prediction performance using a hybrid modeling approach  
+- Apply machine learning and statistical methods to a real-world financial use case  
 
 ---
 
-## ⚙️ Tech Stack
+## Approach
 
-- **Python**
-- **TensorFlow / Keras**
-- **Pandas, NumPy**
-- **Matplotlib**
-- **Statsmodels (ARIMA)**
-- **Scikit-learn**
+The model works in two stages:
+
+- LSTM captures trends, seasonality, and non-linear patterns in stock prices  
+- ARIMA is applied on residual errors to correct consistent deviations  
+
+Final prediction is calculated by combining both outputs: Final Prediction = LSTM Prediction + ARIMA Correction
 
 ---
 
-## 🏗️ Architecture
+## Tech Stack
+
+- Python  
+- TensorFlow / Keras  
+- Pandas, NumPy  
+- Matplotlib  
+- Statsmodels (ARIMA)  
+- Scikit-learn  
+
+---
+
+## Architecture
 Raw Data → Preprocessing → Train/Test Split
-↓
-LSTM Model
-↓
-Initial Predictions
-↓
-Residual (Error) Calculation
-↓
-ARIMA Model (Errors)
-↓
-Final Corrected Predictions
-
+→ LSTM Model → Initial Predictions
+→ Residual Calculation
+→ ARIMA Model (on errors)
+→ Final Predictions
 
 ---
 
-## 🔄 Workflow
+## Workflow
 
 ### 1. Data Preprocessing
-- Load time-series stock data  
+- Load stock price data  
 - Handle missing values  
-- Structure data for sequential modeling  
-
----
+- Prepare data for time-series modeling  
 
 ### 2. Data Transformation
 - Convert time-series into supervised learning format  
-- Create sequences of past `n` observations  
-
----
+- Create sequences using past observations  
 
 ### 3. Train-Test Split
-- Chronological split (no random sampling)  
-- Maintains time dependency  
-
----
+- Use chronological split  
+- Preserve time dependency (no random sampling)  
 
 ### 4. LSTM Model
-- Captures long-term dependencies in stock prices  
-- Learns non-linear relationships  
-- Generates initial predictions  
+- Train model on sequential data  
+- Capture long-term dependencies and non-linear patterns  
+- Generate initial predictions  
 
----
-
-### 5. Error Modeling
-- Compute residuals: Error = Actual - Predicted
-
-
-- Identify systematic prediction gaps  
-
----
+### 5. Residual Analysis
+- Calculate prediction errors  
+- Identify patterns in residuals  
 
 ### 6. ARIMA Model
 - Train ARIMA on residuals  
 - Model linear structure in errors  
-- Forecast future correction values  
+- Generate correction values  
+
+### 7. Final Output
+- Combine LSTM predictions with ARIMA corrections  
+- Produce refined forecasts  
 
 ---
 
-### 7. Final Prediction
-- Final Prediction = LSTM Prediction + ARIMA Correction
-- Produces refined and more accurate outputs  
+## Evaluation Metrics
+
+- Mean Squared Error (MSE)  
+- Root Mean Squared Error (RMSE)  
+- Mean Absolute Error (MAE)  
+
+These metrics are used to measure accuracy and compare model performance.
 
 ---
 
-## 📊 Evaluation Metrics
+## Visualizations
 
-The model is evaluated using:
-
-- **MSE (Mean Squared Error)**  
-- **RMSE (Root Mean Squared Error)**  
-- **MAE (Mean Absolute Error)**  
-
-These metrics ensure:
-- Model accuracy validation  
-- Error quantification  
-- Performance benchmarking  
+- Actual vs Predicted Prices  
+- Train vs Test Split  
+- Prediction Error Trends  
+- Final Hybrid Model Output  
+- Accuracy Comparison  
 
 ---
 
-## 📈 Visualizations
+## Key Observations
 
-The project generates:
-
-- 📉 Actual vs Predicted Prices  
-- 📊 Train vs Test Split  
-- ⚠️ Prediction Error Trends  
-- 📈 Final Hybrid Predictions  
-- 📊 Accuracy Comparison Charts  
+- LSTM performs well in capturing overall trends  
+- ARIMA helps correct systematic errors  
+- Hybrid model produces more stable predictions  
+- Works better than using LSTM or ARIMA alone in most cases  
 
 ---
 
-## 🔍 Key Insights
-
-- LSTM captures **trend and momentum effectively**
-- ARIMA improves **precision by correcting residual errors**
-- Hybrid model:
-  - Reduces overfitting  
-  - Handles noise efficiently  
-  - Produces smoother predictions  
-
-👉 Combined approach outperforms standalone models in most cases.
-
----
-
-## 📂 Core Components
+## Project Structure
 
 ### Data Processing
 - `data_loader()`  
@@ -171,10 +135,8 @@ The project generates:
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ```bash
 git clone https://github.com/kevalrakholiya/Stock_Price_Forecasting.git
 cd Stock_Price_Forecasting
-pip install -r requirements.txt
-python main.py
